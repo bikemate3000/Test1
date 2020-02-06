@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3cb438d7-6e6b-42fc-a444-a43681709d60" basePath="\test" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="ebay_integrationFlow" doc:id="edaa68c8-3b0d-4f8e-b0e1-1e04788f7ee6" >
+		<http:listener doc:name="Listener" doc:id="4aa8cf9e-409e-4bd2-8bd8-9af3d4013232" config-ref="HTTP_Listener_config" path="/hello"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="5cc797b7-994b-4705-abd2-1182d2428128" />
+		<logger level="INFO" doc:name="Logger" doc:id="3a391c12-552b-44cf-9252-bac4b2d34f12" />
+	</flow>
+</mule>
